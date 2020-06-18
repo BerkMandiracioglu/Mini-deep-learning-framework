@@ -5,6 +5,9 @@ In order to develop the framework, we decide to use the code shown in Figure 1 a
 
 
 ![our-figure](our-figure.png)
+
+
+
 The model is defined with a sequential module from torch.nn which has linear layers (with different nodes) and activation functions as arguments. The loss is defined separately (in this case it is the Mean Squared Error). The network training is inside a for-loop, where several steps occur in each iteration:
 *  Feed-forward → y pred = model(x)
 *  Loss computation → loss = loss f n(y pred, y)
@@ -12,7 +15,6 @@ The model is defined with a sequential module from torch.nn which has linear lay
 *  Parameter optimization → data− = learn rate∗grad
 
 It is worth mentioning that before the back-propagation, the function zero grad has to be called. This function we set the gradients to zero before starting to do back- propagation because PyTorch accumulates the gradients on subsequent backward passes
-
 
 
 After having analysed the ”conventional” way of defining a neural network, we select which things we want to emulate and which ones we want to change. In Figure 1, the corresponding code using neural framework.py is shown for comparison purposes. The input data and labels are defined as tensors instead of variables given that the module autograd cannot be imported.
